@@ -1,0 +1,74 @@
+<mvc:View
+	controllerName="erb.bt.demo.view.Detail"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m">
+	<Page
+		showNavButton="{device>/isPhone}"
+		navButtonPress="onNavBack"
+		class="sapUiFioriObjectPage"
+		title="{i18n>detailTitle}">
+		<content>
+		<ObjectHeader
+				title="{Name}"
+				number="{
+					path: 'Price',
+					formatter: 'erb.bt.demo.util.Formatter.currencyValue'
+				}"
+				numberUnit="USD">
+				<attributes>
+					<ObjectAttribute text="{i18n>detailFromDate} {
+						path: 'ReleaseDate',
+						type: 'sap.ui.model.type.Date'
+						}" />
+					<ObjectAttribute text="{Description}" />
+				</attributes>
+				<firstStatus>
+					<ObjectStatus
+						text="{
+							path: 'DiscontinuedDate',
+							formatter: 'erb.bt.demo.util.Formatter.discontinuedStatusValue'
+						}"
+						state="{
+							path: 'DiscontinuedDate',
+							formatter: 'erb.bt.demo.util.Formatter.discontinuedStatusState'
+						}" />
+				</firstStatus>
+			</ObjectHeader>
+			<IconTabBar
+				select="onDetailSelect"
+				id="idIconTabBar">
+				<items>
+					<IconTabFilter
+						key="supplier"
+						text="{i18n>iconTabFilterSupplier}"
+						icon="sap-icon://supplier">
+						<content>
+							<core:Fragment fragmentName="erb.bt.demo.view.SupplierAddressForm" type="XML" />
+						</content>
+					</IconTabFilter>
+					<IconTabFilter
+						key="category"
+						text="{i18n>iconTabFilterCategory}"
+						icon="sap-icon://hint">
+						<content>
+							<core:Fragment fragmentName="erb.bt.demo.view.CategoryInfoForm" type="XML" />
+						</content>
+					</IconTabFilter>
+				</items>
+				// oInput = new sap.ui.commons.TextArea('input1');
+oInput.setValue("Here is some Text. I hope you like it.");
+oInput.setTooltip("This is a tooltip");
+oInput.setRows(3);
+oInput.attachChange(function(){alert('Text changed to :'+ oInput.getValue());});
+
+// attach it to some element in the page
+oInput.placeAt("sample1");
+			</IconTabBar>
+			</content>
+		<footer>
+			<Bar>
+			</Bar>
+		</footer>
+	</Page>
+</mvc:View>
