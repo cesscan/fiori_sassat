@@ -54,6 +54,8 @@ sap.ui.core.routing.Router.extend("erb.bt.demo.MyRouter", {
   this._oRouteMatchedHandler.destroy();
  },
 
+ //asdsads
+ 
  _findSplitApp : function(oControl) {
   sAncestorControlName = "idAppControl";
 
